@@ -1,0 +1,8 @@
+.background-dark { background: rgb(35,35,35) }
+.section-sidebar .nav .label,
+.featured-tag a,
+section#list-view-2 header a h1,
+section.block-feature-cover a { color: white }
+.section-sidebar .nav i.icon { filter: invert(1) }
+i.icon.star { filter: none !important }
+.section-sidebar .nav li:hover .label { background: black }
