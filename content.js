@@ -42,3 +42,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var wrapper = document.getElementsByClassName("function-wrap")[0];
     wrapper.insertBefore(theme_switch, wrapper.childNodes[0]);
 });
+
+/* #### Show NSFW posts when not logged in #### */
+// doesn't work for videos/gifs
+document.addEventListener("scroll", function() {
+    var nsfw_posts = document.getElementsByClassName("nsfw-post");
+    for (post of nsfw_posts) {
+        var parent = post.parentNode;
+        parent.removeChild(post);
+        var post_id = parent.parentNode.parentNode.parentNode.getAttribute("id").split('-')[2];
+        parent.innerHTML = `<picture>
+                <source srcset="https://img-9gag-fun.9cache.com/photo/` + post_id + `_460swp.webp" type="image/webp">
+                <img src="https://img-9gag-fun.9cache.com/photo/` + post_id + `_460s.jpg">
+            </picture>`;
+    }
+});
+
+/*
+<video preload="auto" poster="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460s.jpg" loop="loop">
+    <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460svvp9.webm" type="video/webm">
+    <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460sv.mp4" type="video/mp4">
+    <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460svwm.webm" type="video/webm">
+</video>
+*/
+an9qge0
+window.onload = function () { window.scrollBy(0,1); }
