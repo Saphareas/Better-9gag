@@ -5,13 +5,13 @@
   "author": "Fabian Große",
   "homepage_url": "https://github.com/Saphareas/Better-9gag-for-Edge",
 
-  "description": "",
+  "description": "A WebExtension that provides improvements to the browsing experience for 9gag.",
 
   "icons": {
     "48": "icons/icon-48.png",
-    "96": "icons/icon-96.png",
     "54": "icons/icon-54.png",
     "90": "icons/icon-90.png",
+    "96": "icons/icon-96.png",
     "120": "icons/icon-120.png"
   },
 
