@@ -3,31 +3,19 @@ document.addEventListener("scroll", function() {
     var videos = document.getElementsByTagName("video");
     for (vid of videos) {
         vid.setAttribute("controls", "");
+        vid.parentNode.removeChild(vid.nextElementSibling);
     }
 });
 
 /* #### Dark/Night theme on desktop #### */
 document.addEventListener("DOMContentLoaded", function(event) {
     // Code in this form to inject into the site
-    const switch_function = `function switch_theme() {
-        var stylesheet = document.getElementById("dark-theme");
-        if (stylesheet) {
-            stylesheet.parentNode.removeChild(stylesheet);
-            theme_switch.innerText = low_brightness;
-        } else {
-            stylesheet = document.createElement("link");
-            stylesheet.setAttribute("id", "dark-theme");
-            stylesheet.setAttribute("href", "` + browser.runtime.getURL("darken_9gag.css") + `");
-            stylesheet.setAttribute("rel", "stylesheet");
-            stylesheet.setAttribute("type", "text/css");
-            document.getElementsByTagName("head")[0].appendChild(stylesheet);
-            document.getElementsByClassName("background-white")[0].setAttribute("class", "background-dark");
-            theme_switch.innerText = high_brightness;
-        }
-    }`
+    const switch_function = 'function switch_theme() { var stylesheet = document.getElementById("dark-theme"); if (stylesheet) { stylesheet.parentNode.removeChild(stylesheet); theme_switch.innerText = low_brightness; } else { stylesheet = document.createElement("link"); stylesheet.setAttribute("id", "dark-theme"); stylesheet.setAttribute("href", "' + browser.runtime.getURL("darken_9gag.css") + '"); stylesheet.setAttribute("rel", "stylesheet"); stylesheet.setAttribute("type", "text/css"); document.getElementsByTagName("head")[0].appendChild(stylesheet); document.getElementsByClassName("background-white")[0].setAttribute("class", "background-dark"); theme_switch.innerText = high_brightness; }}'
     // Inject code (end of body)
     var switch_function_tag = document.createElement("script");
-    switch_function_tag.innerHTML = switch_function;
+    switch_function_tag.id = "theme-switch-function";
+    switch_function_tag.appendChild(document.createTextNode(switch_function));
+    console.debug(switch_function_tag);
     document.body.appendChild(switch_function_tag);
 
     const low_brightness = "🔅";
@@ -51,10 +39,16 @@ document.addEventListener("scroll", function() {
         var parent = post.parentNode;
         parent.removeChild(post);
         var post_id = parent.parentNode.parentNode.parentNode.getAttribute("id").split('-')[2];
-        parent.innerHTML = `<picture>
-                <source srcset="https://img-9gag-fun.9cache.com/photo/` + post_id + `_460swp.webp" type="image/webp">
-                <img src="https://img-9gag-fun.9cache.com/photo/` + post_id + `_460s.jpg">
-            </picture>`;
+        var source = document.createElement("source");
+        source.srcset = "https://img-9gag-fun.9cache.com/photo/" + post_id + "_460swp.webp";
+        source.type = "image/webp";
+        var fallback = document.createElement("img");
+        fallback.src= "https://img-9gag-fun.9cache.com/photo/" + post_id + "_460s.jpg";
+        var picture_tag = document.createElement("picture");
+        picture_tag.appendChild(source);
+        picture_tag.appendChild(fallback);
+        console.debug(picture_tag);
+        parent.appendChild(picture_tag);
     }
 });
 
@@ -65,5 +59,4 @@ document.addEventListener("scroll", function() {
     <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460svwm.webm" type="video/webm">
 </video>
 */
-an9qge0
-window.onload = function () { window.scrollBy(0,1); }
+//window.onload = function () { window.scrollBy(0,1); }
