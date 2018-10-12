@@ -3,6 +3,7 @@ A WebExtension for Microsoft Edge (only) that provides improvements to the brows
 
 <!-- TOC -->
 
+- [Features](#features)
 - [Installing](#installing)
 - [Authors](#authors)
 - [License](#license)
@@ -10,9 +11,19 @@ A WebExtension for Microsoft Edge (only) that provides improvements to the brows
 
 <!-- /TOC -->
 
+## Features
+
+Provides features, such as:
+- A dark or night theme
+- Video controls for videos and gifs
+- Show NSFW images when you're not logged in
+
 ## Installing
 
-Once the extension is whitelisted for the Windows Store, just search for "Better 9gag" and install like every other app or extension.
+**INFO:**
+Once the extension is whitelisted for the Windows Store, just search for "Better 9gag" and install like every other app or extension.<br>
+[![Firefox](.github/firefox-logo.png)](https://addons.mozilla.org/de/firefox/addon/better-9gag/)<br>
+Click here for the Firefox listing
 
 ## Authors
 
