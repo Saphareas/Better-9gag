@@ -3,7 +3,9 @@ document.addEventListener("scroll", function() {
     var videos = document.getElementsByTagName("video");
     for (vid of videos) {
         vid.setAttribute("controls", "");
-        vid.parentNode.removeChild(vid.nextElementSibling);
+        if (vid.nextElementSibling.classList[0] == "sound-toggle") {
+            vid.parentNode.removeChild(vid.nextElementSibling);
+        }
     }
 });
 
@@ -15,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var switch_function_tag = document.createElement("script");
     switch_function_tag.id = "theme-switch-function";
     switch_function_tag.appendChild(document.createTextNode(switch_function));
-    console.debug(switch_function_tag);
     document.body.appendChild(switch_function_tag);
 
     // Create the switch button
@@ -46,7 +47,6 @@ document.addEventListener("scroll", function() {
         var picture_tag = document.createElement("picture");
         picture_tag.appendChild(source);
         picture_tag.appendChild(fallback);
-        console.debug(picture_tag);
         parent.appendChild(picture_tag);
     }
 });
@@ -58,4 +58,4 @@ document.addEventListener("scroll", function() {
     <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460svwm.webm" type="video/webm">
 </video>
 */
-//window.onload = function () { window.scrollBy(0,1); }
+window.onload = function () { window.scrollBy(0,1); }
