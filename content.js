@@ -22,13 +22,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // Create the switch button
     var theme_switch = document.createElement("a");
     theme_switch.id = "theme-switch";
-    theme_switch.style = "display:block; height:30px; width:30px; float:left; padding:9px 0; font-size:16pt;";
+    theme_switch.style = "display:block; height:30px; width:30px; float:left; font-size:16pt;";
     theme_switch.setAttribute("onclick", "switch_theme()");
     theme_switch.href= "javascript:void(0)";
     theme_switch.innerText = "🔅";
+    var theme_switch_wrap = document.createElement("div");
+    theme_switch_wrap.classList.add("general-function");
+    theme_switch_wrap.style = "text-align:center; line-height:30px; margin-right:10px;";
+    theme_switch_wrap.appendChild(theme_switch);
     // ... and add it to the site (in the header, next to the search)
     var wrapper = document.getElementsByClassName("function-wrap")[0];
-    wrapper.insertBefore(theme_switch, wrapper.childNodes[0]);
+    wrapper.insertBefore(theme_switch_wrap, wrapper.childNodes[0]);
 });
 
 /* #### Show NSFW posts when not logged in #### */
