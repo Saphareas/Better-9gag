@@ -62,4 +62,13 @@ document.addEventListener("scroll", function() {
     <source src="https://img-9gag-fun.9cache.com/photo/aB0Rn62_460svwm.webm" type="video/webm">
 </video>
 */
+
+/* #### Remove sharing buttons #### */
+document.addEventListener("scroll", function() {
+    var share_btns_wrap = document.getElementsByClassName("share");
+    for (i=0; i<share_btns_wrap.length; i++) {
+        share_btns_wrap[i].parentNode.removeChild(share_btns_wrap[i]);
+    }
+});
+
 window.onload = function () { window.scrollBy(0,1); }
