@@ -71,4 +71,15 @@ document.addEventListener("scroll", function() {
     }
 });
 
+/* #### General style tweaks #### */
+document.addEventListener("DOMContentLoaded", function() {
+    var head = document.getElementsByTagName("head")[0];
+    var style_tag = document.createElement("style");
+    var style = `
+        #jsid-header-user-menu-avatar>a { border-radius: 2px; }
+        .popup-menu.postpage-share { top: 43px; left: 164px; }`
+    style_tag.append();
+    head.append(style_tag);
+});
+
 window.onload = function () { window.scrollBy(0,1); }
