@@ -19,7 +19,7 @@ Provides features, such as:
 
 - A dark or night theme
 - Video controls for videos and gifs
-- Show NSFW images when you're not logged in
+- Show NSFW images and gifs when you're not logged in
 - Removing the sharing buttons
 - General style tweaks
 
@@ -27,9 +27,8 @@ Provides features, such as:
 
 Features that are planned for the future:
 
-- Persistent night theme
+- Persistent night theme _(planned for v1.5)_
 - Configure extension settings _(planned for v2.0)_
-- Make NSFW login bypass work for videos/gifs
 - Some more style tweaks
 
 ## Installing

@@ -39,19 +39,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // doesn't work for videos/gifs
 document.addEventListener("scroll", function() {
     var nsfw_posts = document.getElementsByClassName("nsfw-post");
-    for (post of nsfw_posts) {
-        var parent = post.parentNode;
-        parent.removeChild(post);
+    for (i=0; i<nsfw_posts.length; i++) {
+        var parent = nsfw_posts[i].parentNode;
         var post_id = parent.parentNode.parentNode.parentNode.getAttribute("id").split('-')[2];
-        var source = document.createElement("source");
-        source.srcset = "https://img-9gag-fun.9cache.com/photo/" + post_id + "_460swp.webp";
-        source.type = "image/webp";
-        var fallback = document.createElement("img");
-        fallback.src= "https://img-9gag-fun.9cache.com/photo/" + post_id + "_460s.jpg";
-        var picture_tag = document.createElement("picture");
-        picture_tag.appendChild(source);
-        picture_tag.appendChild(fallback);
-        parent.appendChild(picture_tag);
+        has_video(post_id, parent);
+        parent.removeChild(nsfw_posts[i]);
+
+        function has_video(post_id, parent_node) {
+            const src_url_base = "https://img-9gag-fun.9cache.com/photo/" + post_id;
+            var video = document.createElement("video");
+            video.src = src_url_base + "_460sv.mp4";
+            video.autoplay = true;
+            video.loop = true;
+            video.controls = true;
+
+            video.onloadedmetadata = function() {
+                parent_node.appendChild(video);
+            }
+
+            video.onerror = function() {
+                var image = document.createElement("img");
+                image.src= src_url_base + "_460s.jpg";
+                parent_node.appendChild(image);
+            }
+        }
     }
 });
 
