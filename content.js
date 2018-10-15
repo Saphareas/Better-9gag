@@ -93,4 +93,13 @@ document.addEventListener("DOMContentLoaded", function() {
     head.append(style_tag);
 });
 
+document.addEventListener("scroll", function() {
+    /* ### Remove annoying paid video post from ora.tv ### */
+    var ora = document.querySelector('iframe[src^="https://www.ora.tv"]');
+    if (ora) {
+        ora = ora.parentNode.parentNode;
+        ora.parentNode.removeChild(ora);
+    }
+});
+
 window.onload = function () { window.scrollBy(0,1); }
