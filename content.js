@@ -48,7 +48,8 @@ function switch_theme(target) {
             theme_switch.innerText = low_brightness;
         }
         // finally save the state in extension storage
-        browser.storage.local.set({gag_is_dark: false});
+        if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: false}); }
+        else { browser.storage.local.set({gag_is_dark: false}); }
     }
     // If the target theme is dark
     else if (target == "to_dark") {
@@ -57,14 +58,16 @@ function switch_theme(target) {
         if (!stylesheet) {
             stylesheet = document.createElement("link");
             stylesheet.setAttribute("id", "dark-theme");
-            stylesheet.setAttribute("href", browser.runtime.getURL("darken_9gag.css"));
+            if (typeof(browser) == "undefined") { stylesheet.setAttribute("href", chrome.runtime.getURL("darken_9gag.css")); }
+            else { stylesheet.setAttribute("href", browser.runtime.getURL("darken_9gag.css")); }
             stylesheet.setAttribute("rel", "stylesheet");
             stylesheet.setAttribute("type", "text/css");
             document.getElementsByTagName("head")[0].appendChild(stylesheet);
             theme_switch.innerText = high_brightness;
         }
         // finally save the state in extension storage
-        browser.storage.local.set({gag_is_dark: true});
+        if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: true}); }
+        else { browser.storage.local.set({gag_is_dark: true}); }
     }
 }
 
@@ -73,6 +76,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var callback = function() {
         // function to be run by the below promise on success
         function onGot(item) {
+            if (item == undefined) {
+                if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: false}); }
+                else { browser.storage.local.set({gag_is_dark: false}); }
+            }
             // check if the trigger is present
             var trigger = document.getElementById("switch_theme_trigger");
             // if the trigger is present (user requested theme change)
@@ -104,10 +111,13 @@ document.addEventListener("DOMContentLoaded", function() {
         function onError(error) {
             console.debug(`Error: ${error}`);
         }
-        // read the extension storage (it's a promise)
-        let get_storage = browser.storage.local.get();
-        // if successful, run onGot(); if not run onError()
-        get_storage.then(onGot, onError);
+        if (typeof(browser) == "undefined") { chrome.storage.local.get(null, onGot); }
+        else {
+            // read the extension storage (it's a promise)
+            let get_storage = browser.storage.local.get();
+            // if successful, run onGot(); if not run onError()
+            get_storage.then(onGot, onError);
+        }
     };
     // elements to be observed
     var config = { childList: true, subtree: true };
@@ -184,3 +194,6 @@ document.addEventListener("scroll", function() {
 });
 // initial scroll to trigger the event once
 window.onload = function () { window.scrollBy(0,1); }
+
+console.debug("Type of browser: "+typeof(browser));
+console.debug("Type of chrome: "+typeof(chrome));
