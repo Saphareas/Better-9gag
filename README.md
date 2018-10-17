@@ -49,11 +49,11 @@ Features that are planned for the future:
 
 ### Google Chrome
 
-![Chrome](.github/chrome-logo-small.png) 
+![Chrome](.github/chrome-logo-small.png)
 **Note**: For Chrome only manual installation is currently supported. To do this, follow these instructions:
 
 1. Download the extension file (Better-9gag.crx) [here](https://github.com/Saphareas/Better-9gag/releases/latest)
-2. Go to Chrome's [Extensions page](chrome://extensions/)
+2. Go to Chrome's Extensions page ( chrome://extensions/ )
 3. Activate the developer mode (it's a switch in the top right)
 4. Drag and drop the downloaded file from your downloads folder into the page
 
