@@ -6,7 +6,8 @@ A WebExtension that provides improvements to the browsing experience for 9gag.
 
 - [Features](#features)
   - [Coming features](#coming-features)
-- [Installing](#installing)
+- [Installation](#installation)
+  - [Google Chrome](#google-chrome)
 - [Authors](#authors)
 - [License](#license)
 - [Disclaimer](#disclaimer)
@@ -31,10 +32,30 @@ Features that are planned for the future:
 - Configure extension settings _(planned for v2.0)_
 - Some more style tweaks
 
-## Installing
+## Installation
 
-[![Firefox](.github/firefox-logo.png)](https://addons.mozilla.org/de/firefox/addon/better-9gag/)<br>
-Click here for the Firefox listing
+<table>
+  <tr>
+    <td style="text-align:center">
+      <a href="https://addons.mozilla.org/de/firefox/addon/better-9gag/">
+        <img src=".github/firefox-logo.png" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>Click here for the Firefox listing</td>
+  </tr>
+</table>
+
+### Google Chrome
+
+![Chrome](.github/chrome-logo-small.png) 
+**Note**: For Chrome only manual installation is currently supported. To do this, follow these instructions:
+
+1. Download the extension file (Better-9gag.crx) [here](https://github.com/Saphareas/Better-9gag/releases/latest)
+2. Go to Chrome's [Extensions page](chrome://extensions/)
+3. Activate the developer mode (it's a switch in the top right)
+4. Drag and drop the downloaded file from your downloads folder into the page
 
 ## Authors
 
