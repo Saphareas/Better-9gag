@@ -27,7 +27,7 @@ Provides features, such as:
 
 Features that are planned for the future:
 
-- Persistent night theme _(planned for v1.5)_
+- ~~Persistent night theme _(planned for v1.5)_~~ ✔ done
 - Configure extension settings _(planned for v2.0)_
 - Some more style tweaks
 

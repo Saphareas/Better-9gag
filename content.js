@@ -10,20 +10,20 @@ document.addEventListener("scroll", function() {
 });
 
 /* #### Dark/Night theme on desktop #### */
-document.addEventListener("DOMContentLoaded", function(event) {
-    // Code in this form to inject into the site
-    const switch_function = 'const low_brightness = "🔅"; const high_brightness = "🔆"; function switch_theme() { var theme_switch = document.getElementById("theme-switch"); var stylesheet = document.getElementById("dark-theme"); if (stylesheet) { stylesheet.parentNode.removeChild(stylesheet); document.getElementsByClassName("background-dark")[0].setAttribute("class", "background-white"); theme_switch.innerText = low_brightness; } else { stylesheet = document.createElement("link"); stylesheet.setAttribute("id", "dark-theme"); stylesheet.setAttribute("href", "' + browser.runtime.getURL("darken_9gag.css") + '"); stylesheet.setAttribute("rel", "stylesheet"); stylesheet.setAttribute("type", "text/css"); document.getElementsByTagName("head")[0].appendChild(stylesheet); document.getElementsByClassName("background-white")[0].setAttribute("class", "background-dark"); theme_switch.innerText = high_brightness; }}'
+document.addEventListener("DOMContentLoaded", function() {
+    // Code to inject into the site; triggers the body observer
+    const switch_function_trigger = 'function switch_theme_trigger() { let trigger = document.createElement("div"); trigger.id = "switch_theme_trigger"; let stylesheet = document.getElementById("dark-theme"); if (stylesheet) { trigger.setAttribute("data-switch-to", "reset"); } else { trigger.setAttribute("data-switch-to", "to_dark"); } document.body.append(trigger); }';
     // Inject code (end of body)
     var switch_function_tag = document.createElement("script");
     switch_function_tag.id = "theme-switch-function";
-    switch_function_tag.appendChild(document.createTextNode(switch_function));
+    switch_function_tag.appendChild(document.createTextNode(switch_function_trigger));
     document.body.appendChild(switch_function_tag);
 
     // Create the switch button
     var theme_switch = document.createElement("a");
     theme_switch.id = "theme-switch";
     theme_switch.style = "display:block; height:30px; width:30px; float:left; font-size:16pt;";
-    theme_switch.setAttribute("onclick", "switch_theme()");
+    theme_switch.setAttribute("onclick", "switch_theme_trigger()");
     theme_switch.href= "javascript:void(0)";
     theme_switch.innerText = "🔅";
     var theme_switch_wrap = document.createElement("div");
@@ -33,6 +33,87 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // ... and add it to the site (in the header, next to the search)
     var wrapper = document.getElementsByClassName("function-wrap")[0];
     wrapper.insertBefore(theme_switch_wrap, wrapper.childNodes[0]);
+});
+
+const low_brightness = "🔅"; const high_brightness = "🔆";
+// Actual function to switch the theme; is run by the body observer
+function switch_theme(target) {
+    var theme_switch = document.getElementById("theme-switch");
+    // If the target theme is not dark, means back to normal
+    if (target != "to_dark") {
+        var stylesheet = document.getElementById("dark-theme");
+        // remove the dark stylesheet (if present) and change the switch icon
+        if (stylesheet) {
+            stylesheet.parentNode.removeChild(stylesheet);
+            theme_switch.innerText = low_brightness;
+        }
+        // finally save the state in extension storage
+        browser.storage.local.set({gag_is_dark: false});
+    }
+    // If the target theme is dark
+    else if (target == "to_dark") {
+        var stylesheet = document.getElementById("dark-theme");
+        // create and add a link to the dark stylesheet (if not already present) and change the switch icon
+        if (!stylesheet) {
+            stylesheet = document.createElement("link");
+            stylesheet.setAttribute("id", "dark-theme");
+            stylesheet.setAttribute("href", browser.runtime.getURL("darken_9gag.css"));
+            stylesheet.setAttribute("rel", "stylesheet");
+            stylesheet.setAttribute("type", "text/css");
+            document.getElementsByTagName("head")[0].appendChild(stylesheet);
+            theme_switch.innerText = high_brightness;
+        }
+        // finally save the state in extension storage
+        browser.storage.local.set({gag_is_dark: true});
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // function to call, if body observer fires
+    var callback = function() {
+        // function to be run by the below promise on success
+        function onGot(item) {
+            // check if the trigger is present
+            var trigger = document.getElementById("switch_theme_trigger");
+            // if the trigger is present (user requested theme change)
+            if (trigger != null) {
+                // if storage is dark and request is smth else (reset) => switch theme to normal
+                if (item.gag_is_dark === true && trigger.getAttribute("data-switch-to") != "to_dark") {
+                    switch_theme("reset");
+                }
+                // if storage is normal and request change to dark => switch theme to dark
+                else if (item.gag_is_dark === false && trigger.getAttribute("data-switch-to") == "to_dark") {
+                    switch_theme("to_dark");
+                }
+                //console.debug(trigger);
+                //finally remove the trigger
+                trigger.parentNode.removeChild(trigger);
+            }
+            //if the trigger is not present (first load or user navigated)
+            else {
+                // switch theme according to the storage item
+                if (item.gag_is_dark === true) {
+                    switch_theme("to_dark");
+                } else {
+                    switch_theme("reset");
+                }
+            }
+            //console.debug(item);
+        }
+        // function to be run by the below promise on an error
+        function onError(error) {
+            console.debug(`Error: ${error}`);
+        }
+        // read the extension storage (it's a promise)
+        let get_storage = browser.storage.local.get();
+        // if successful, run onGot(); if not run onError()
+        get_storage.then(onGot, onError);
+    };
+    // elements to be observed
+    var config = { childList: true, subtree: true };
+    // create and attach the observer
+    var body_observer = new MutationObserver(callback);
+    body_observer.observe(document.body, config);
 });
 
 /* #### Show NSFW posts when not logged in #### */
