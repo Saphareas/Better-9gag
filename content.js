@@ -111,8 +111,13 @@ document.addEventListener("DOMContentLoaded", function() {
         function onError(error) {
             console.debug(`Error: ${error}`);
         }
-        if (typeof(browser) == "undefined") { chrome.storage.local.get(null, onGot); }
-        else {
+        if (typeof(browser) == "undefined" && typeof(chrome) != "undefined") { // Chrome: uses "chrome" namespace, doesn't support promises
+            chrome.storage.local.get(null, onGot);
+        }
+        else if (typeof(chrome) == "undefined" && typeof(browser) != "undefined") { // Edge: uses "browser" namespace, doesn't support promises
+            browser.storage.local.get(null, onGot);
+        }
+        else { // Firefox: supports both namespaces and promises
             // read the extension storage (it's a promise)
             let get_storage = browser.storage.local.get();
             // if successful, run onGot(); if not run onError()
