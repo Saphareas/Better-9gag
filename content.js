@@ -1,10 +1,11 @@
 /* #### Add controls to all videos/gifs #### */
 document.addEventListener("scroll", function() {
     var videos = document.getElementsByTagName("video");
-    for (vid of videos) {
-        vid.setAttribute("controls", "");
-        if (vid.nextElementSibling.classList[0] == "sound-toggle") {
-            vid.parentNode.removeChild(vid.nextElementSibling);
+    for (var i = 0; i < videos.length; i++) {
+        videos[i].controls = true;
+        videos[i].volume = 0.5;
+        if (videos[i].nextElementSibling.classList[0] == "sound-toggle") {
+            videos[i].parentNode.removeChild(videos[i].nextElementSibling);
         }
     }
 });
@@ -150,9 +151,9 @@ document.addEventListener("scroll", function() {
             // create a video node with the unlocked post as source
             var video = document.createElement("video");
             video.src = src_url_base + "_460sv.mp4";
-            video.autoplay = true;
             video.loop = true;
             video.controls = true;
+            video.volume = 0.5;
             // inject it into the site asap
             video.onloadedmetadata = function() {
                 parent_node.appendChild(video);
@@ -199,6 +200,3 @@ document.addEventListener("scroll", function() {
 });
 // initial scroll to trigger the event once
 window.onload = function () { window.scrollBy(0,1); }
-
-console.debug("Type of browser: "+typeof(browser));
-console.debug("Type of chrome: "+typeof(chrome));

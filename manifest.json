@@ -23,7 +23,7 @@
     }
   ],
 
-  "web_accessible_resources": [ "darken_9gag.css" ],
+  "web_accessible_resources": ["darken_9gag.css"],
 
   "permissions": ["storage"]
 }
