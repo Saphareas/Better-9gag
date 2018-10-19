@@ -1,15 +1,25 @@
 /* #### Add controls to all videos/gifs #### */
 document.addEventListener("scroll", function() {
     var videos = document.getElementsByTagName("video");
-    for (vid of videos) {
-        vid.setAttribute("controls", "");
-        if (vid.nextElementSibling.classList[0] == "sound-toggle") {
-            vid.parentNode.removeChild(vid.nextElementSibling);
+    for (var i = 0; i < videos.length; i++) {
+        videos[i].controls = true;
+        videos[i].volume = 0.5;
+        if (videos[i].nextElementSibling.classList[0] == "sound-toggle") {
+            videos[i].parentNode.removeChild(videos[i].nextElementSibling);
         }
     }
 });
 
 /* #### Dark/Night theme on desktop #### */
+const low_brightness = function() {
+    if (typeof(browser) == "undefined") { return chrome.runtime.getURL("icons/low-brightness-symbol.png"); }
+    else { return chrome.runtime.getURL("icons/low-brightness-symbol.png"); }
+}();
+const high_brightness = function(){
+    if (typeof(browser) == "undefined") { return chrome.runtime.getURL("icons/high-brightness-symbol.png"); }
+    else { return chrome.runtime.getURL("icons/high-brightness-symbol.png"); }
+}();
+
 document.addEventListener("DOMContentLoaded", function() {
     // Code to inject into the site; triggers the body observer
     const switch_function_trigger = 'function switch_theme_trigger() { let trigger = document.createElement("div"); trigger.id = "switch_theme_trigger"; let stylesheet = document.getElementById("dark-theme"); if (stylesheet) { trigger.setAttribute("data-switch-to", "reset"); } else { trigger.setAttribute("data-switch-to", "to_dark"); } document.body.append(trigger); }';
@@ -20,22 +30,24 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(switch_function_tag);
 
     // Create the switch button
-    var theme_switch = document.createElement("a");
-    theme_switch.id = "theme-switch";
-    theme_switch.style = "display:block; height:30px; width:30px; float:left; font-size:16pt;";
-    theme_switch.setAttribute("onclick", "switch_theme_trigger()");
-    theme_switch.href= "javascript:void(0)";
-    theme_switch.innerText = "🔅";
+    var theme_switch_img = document.createElement("img");
+    theme_switch_img.style = "height:30px; width:30px;";
+    theme_switch_img.src = low_brightness;
+    var theme_switch_a = document.createElement("a");
+    theme_switch_a.id = "theme-switch";
+    theme_switch_a.style = "display:block; height:30px; width:30px; float:left;";
+    theme_switch_a.setAttribute("onclick", "switch_theme_trigger()");
+    theme_switch_a.href= "javascript:void(0)";
+    theme_switch_a.append(theme_switch_img);
     var theme_switch_wrap = document.createElement("div");
     theme_switch_wrap.classList.add("general-function");
     theme_switch_wrap.style = "text-align:center; line-height:30px; margin-right:10px;";
-    theme_switch_wrap.appendChild(theme_switch);
+    theme_switch_wrap.appendChild(theme_switch_a);
     // ... and add it to the site (in the header, next to the search)
     var wrapper = document.getElementsByClassName("function-wrap")[0];
     wrapper.insertBefore(theme_switch_wrap, wrapper.childNodes[0]);
 });
 
-const low_brightness = "🔅"; const high_brightness = "🔆";
 // Actual function to switch the theme; is run by the body observer
 function switch_theme(target) {
     var theme_switch = document.getElementById("theme-switch");
@@ -45,7 +57,7 @@ function switch_theme(target) {
         // remove the dark stylesheet (if present) and change the switch icon
         if (stylesheet) {
             stylesheet.parentNode.removeChild(stylesheet);
-            theme_switch.innerText = low_brightness;
+            theme_switch.firstChild.src = low_brightness;
         }
         // finally save the state in extension storage
         if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: false}); }
@@ -63,7 +75,7 @@ function switch_theme(target) {
             stylesheet.setAttribute("rel", "stylesheet");
             stylesheet.setAttribute("type", "text/css");
             document.getElementsByTagName("head")[0].appendChild(stylesheet);
-            theme_switch.innerText = high_brightness;
+            theme_switch.firstChild.src = high_brightness;
         }
         // finally save the state in extension storage
         if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: true}); }
@@ -111,8 +123,13 @@ document.addEventListener("DOMContentLoaded", function() {
         function onError(error) {
             console.debug(`Error: ${error}`);
         }
-        if (typeof(browser) == "undefined") { chrome.storage.local.get(null, onGot); }
-        else {
+        if (typeof(browser) == "undefined" && typeof(chrome) != "undefined") { // Chrome: uses "chrome" namespace, doesn't support promises
+            chrome.storage.local.get(null, onGot);
+        }
+        else if (typeof(chrome) == "undefined" && typeof(browser) != "undefined") { // Edge: uses "browser" namespace, doesn't support promises
+            browser.storage.local.get(null, onGot);
+        }
+        else { // Firefox: supports both namespaces and promises
             // read the extension storage (it's a promise)
             let get_storage = browser.storage.local.get();
             // if successful, run onGot(); if not run onError()
@@ -145,9 +162,9 @@ document.addEventListener("scroll", function() {
             // create a video node with the unlocked post as source
             var video = document.createElement("video");
             video.src = src_url_base + "_460sv.mp4";
-            video.autoplay = true;
             video.loop = true;
             video.controls = true;
+            video.volume = 0.5;
             // inject it into the site asap
             video.onloadedmetadata = function() {
                 parent_node.appendChild(video);
@@ -194,6 +211,3 @@ document.addEventListener("scroll", function() {
 });
 // initial scroll to trigger the event once
 window.onload = function () { window.scrollBy(0,1); }
-
-console.debug("Type of browser: "+typeof(browser));
-console.debug("Type of chrome: "+typeof(chrome));
