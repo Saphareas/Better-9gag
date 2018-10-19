@@ -18,7 +18,10 @@
   "content_scripts": [
     {
       "matches": ["*://*.9gag.com/*"],
-      "js": ["content.js"],
+      "js": [
+        "jquery-3.3.1.slim.js",
+        "modules/night-mode.js",
+        "content.js"],
       "run_at": "document_start"
     }
   ],
