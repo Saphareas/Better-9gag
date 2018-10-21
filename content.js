@@ -10,66 +10,6 @@ document.addEventListener("scroll", function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // function to call, if body observer fires
-    var callback = function() {
-        // function to be run by the below promise on success
-        function onGot(item) {
-            if (item == undefined) {
-                if (typeof(browser) == "undefined") { chrome.storage.local.set({gag_is_dark: false}); }
-                else { browser.storage.local.set({gag_is_dark: false}); }
-            }
-            // check if the trigger is present
-            var trigger = document.getElementById("switch_theme_trigger");
-            // if the trigger is present (user requested theme change)
-            if (trigger != null) {
-                // if storage is dark and request is smth else (reset) => switch theme to normal
-                if (item.gag_is_dark === true && trigger.getAttribute("data-switch-to") != "to_dark") {
-                    switch_theme("reset");
-                }
-                // if storage is normal and request change to dark => switch theme to dark
-                else if (item.gag_is_dark === false && trigger.getAttribute("data-switch-to") == "to_dark") {
-                    switch_theme("to_dark");
-                }
-                //console.debug(trigger);
-                //finally remove the trigger
-                trigger.parentNode.removeChild(trigger);
-            }
-            //if the trigger is not present (first load or user navigated)
-            else {
-                // switch theme according to the storage item
-                if (item.gag_is_dark === true) {
-                    switch_theme("to_dark");
-                } else {
-                    switch_theme("reset");
-                }
-            }
-            //console.debug(item);
-        }
-        // function to be run by the below promise on an error
-        function onError(error) {
-            console.debug(`Error: ${error}`);
-        }
-        if (typeof(browser) == "undefined" && typeof(chrome) != "undefined") { // Chrome: uses "chrome" namespace, doesn't support promises
-            chrome.storage.local.get(null, onGot);
-        }
-        else if (typeof(chrome) == "undefined" && typeof(browser) != "undefined") { // Edge: uses "browser" namespace, doesn't support promises
-            browser.storage.local.get(null, onGot);
-        }
-        else { // Firefox: supports both namespaces and promises
-            // read the extension storage (it's a promise)
-            let get_storage = browser.storage.local.get();
-            // if successful, run onGot(); if not run onError()
-            get_storage.then(onGot, onError);
-        }
-    };
-    // elements to be observed
-    var config = { childList: true, subtree: true };
-    // create and attach the observer
-    var body_observer = new MutationObserver(callback);
-    body_observer.observe(document.body, config);
-});
-
 /* #### Show NSFW posts when not logged in #### */
 document.addEventListener("scroll", function() {
     // get all NSFW post
