@@ -35,5 +35,5 @@ function unlockNsfwPosts() {
         parent.removeChild(nsfwPosts[i]);
     }
 }
-
+// TODO: replace onscroll event with Mutation Observer
 document.addEventListener("scroll", unlockNsfwPosts);

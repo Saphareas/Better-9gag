@@ -1,4 +1,5 @@
 /* #### Remove sharing buttons #### */
+// TODO: Move into modules/no-social-buttons.js and refactor
 document.addEventListener("scroll", function() {
     // get all of the buttons (actually the wrappers)
     var share_btns_wrap = document.getElementsByClassName("share");
@@ -12,6 +13,7 @@ document.addEventListener("scroll", function() {
 document.addEventListener("DOMContentLoaded", function() {
     var head = document.getElementsByTagName("head")[0];
     var style_tag = document.createElement("style");
+    // TODO: Move into ui_tweaks.css
     var style = `
         #jsid-header-user-menu-avatar>a { border-radius: 2px; }
         .popup-menu.postpage-share { top: 43px; left: 164px; }`
@@ -28,7 +30,12 @@ document.addEventListener("scroll", function() {
         ora.parentNode.removeChild(ora);
     }
 });
+// TODO: remove #jsid-sticky-button
+
 // initial scroll to trigger the event once
 window.onload = function () { window.scrollBy(0,1); }
 
-// TODO: replace onscroll events with Mutation Observers
+// TODO: Add a Changelog/First use popup
+// TODO: create a settings page
+// TODO: create a page action (for launching the settings page)
+// TODO: remove or hide Youtube embededs
