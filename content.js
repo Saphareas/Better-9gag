@@ -30,3 +30,5 @@ document.addEventListener("scroll", function() {
 });
 // initial scroll to trigger the event once
 window.onload = function () { window.scrollBy(0,1); }
+
+// TODO: replace onscroll events with Mutation Observers
