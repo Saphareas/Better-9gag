@@ -19,8 +19,8 @@
     {
       "matches": ["*://*.9gag.com/*"],
       "js": [
-        "jquery-3.3.1.slim.js",
         "modules/night-mode.js",
+        "modules/video-controls.js",
         "content.js"
       ],
       "css": ["ui_tweaks.css"],

@@ -1,15 +1,3 @@
-/* #### Add controls to all videos/gifs #### */
-document.addEventListener("scroll", function() {
-    var videos = document.getElementsByTagName("video");
-    for (var i = 0; i < videos.length; i++) {
-        videos[i].controls = true;
-        videos[i].volume = 0.5;
-        if (videos[i].nextElementSibling.classList[0] == "sound-toggle") {
-            videos[i].parentNode.removeChild(videos[i].nextElementSibling);
-        }
-    }
-});
-
 /* #### Show NSFW posts when not logged in #### */
 document.addEventListener("scroll", function() {
     // get all NSFW post
