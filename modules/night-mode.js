@@ -67,7 +67,7 @@ function switchTheme(target) {
         if (!stylesheet) {
             stylesheet = document.createElement("link");
             stylesheet.id = "dark-theme";
-            stylesheet.href = getResourceURL("darken_9gag.css");
+            stylesheet.href = getResourceURL("stylesheets/darken-9gag.css");
             stylesheet.rel = "stylesheet";
             stylesheet.type = "text/css";
             document.getElementsByTagName("head")[0].appendChild(stylesheet);

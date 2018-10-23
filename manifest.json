@@ -26,13 +26,13 @@
         "modules/no-ora-tv.js",
         "content.js"
       ],
-      "css": ["ui_tweaks.css"],
+      "css": ["stylesheets/ui-tweaks.css"],
       "run_at": "document_start"
     }
   ],
 
   "web_accessible_resources": [
-    "darken_9gag.css",
+    "stylesheets/darken-9gag.css",
     "icons/low-brightness-symbol.png",
     "icons/high-brightness-symbol.png"
   ],

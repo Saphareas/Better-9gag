@@ -1,0 +1,23 @@
+/* Dark background for whole site (same grey as YouTubes dark theme) */
+.background-white,
+.post-afterbar-a.in-post-top,
+.CS3 { background: rgb(35,35,35); }
+/* White font for everything */
+.section-sidebar .nav .label,
+.featured-tag a,
+section#list-view-2 header a h1,
+section.block-feature-cover a,
+#individual-post h1,
+.profile-header h2,
+.profile .tab-bar ul.menu a.selected,
+.CS3 .comment-entry .payload .username,
+.CS3 .collapsed-comment,
+.CS3 { color: white; }
+.profile .tab-bar ul.menu a.selected { border-bottom: 2px solid white; }
+/* Make icons of 9gag sections white */
+.section-sidebar .nav i.icon { filter: invert(1); }
+/* ...except the favorites star */
+i.icon.star { filter: none !important; }
+/* Black bg when hovering a 9gag section */
+.section-sidebar .nav li:hover .label { background: black; }
+/* TODO: rename to darken-9gag.css
