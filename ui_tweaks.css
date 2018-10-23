@@ -1,8 +1,14 @@
 #theme-switch-wrapper {
-  margin-right:10px;
+  margin-right: 10px;
 }
-#theme-switch>img {
-  height:30px;
-  width:30px;
+#theme-switch > img {
+  height: 30px;
+  width: 30px;
+}
+#jsid-header-user-menu-avatar > a {
+  border-radius: 2px;
+}
+.popup-menu.postpage-share { 
+  top: 43px; left: 164px; 
 }
 /* TODO: rename to ui-tweaks.css
