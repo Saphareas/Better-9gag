@@ -7,5 +7,12 @@ function rmShareBtns() {
         shareBtnsWrap[i].parentNode.removeChild(shareBtnsWrap[i]);
     }
 }
+
+function rmStickyBtn() {
+    let stickyBtn = document.getElementById("jsid-sticky-button");
+    stickyBtn.parentNode.removeChild(stickyBtn);
+}
+
 // TODO: replace onscroll event with Mutation Observer
 document.addEventListener("scroll", rmShareBtns);
+document.addEventListener("DOMContentLoaded", rmStickyBtn);

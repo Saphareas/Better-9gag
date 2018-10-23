@@ -1,7 +1,5 @@
-// TODO: remove #jsid-sticky-button
-
 // initial scroll to trigger the event once
-window.onload = function () { window.scrollBy(0,1); }
+window.onload = function() { window.scrollBy(0,1); }
 
 // TODO: Add a Changelog/First use popup
 // TODO: create a settings page
