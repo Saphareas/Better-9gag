@@ -22,7 +22,8 @@
         "modules/night-mode.js",
         "modules/video-controls.js",
         "modules/nsfw-unlock.js",
-        "modules\no-social-buttons.js",
+        "modules/no-social-buttons.js",
+        "modules/no-ora-tv.js",
         "content.js"
       ],
       "css": ["ui_tweaks.css"],

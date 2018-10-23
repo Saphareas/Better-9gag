@@ -1,13 +1,3 @@
-/* ### Remove annoying paid video post from ora.tv ### */
-document.addEventListener("scroll", function() {
-    // find it
-    var ora = document.querySelector('iframe[src^="https://www.ora.tv"]');
-    // and delete it
-    if (ora) {
-        ora = ora.parentNode.parentNode;
-        ora.parentNode.removeChild(ora);
-    }
-});
 // TODO: remove #jsid-sticky-button
 
 // initial scroll to trigger the event once
