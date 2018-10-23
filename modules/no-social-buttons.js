@@ -1,9 +1,11 @@
 /* #### Remove sharing buttons #### */
-document.addEventListener("scroll", function() {
+function rmShareBtns() {
     // get all of the buttons (actually the wrappers)
-    var share_btns_wrap = document.getElementsByClassName("share");
+    let shareBtnsWrap = document.getElementsByClassName("share");
     // ...and remove 'em
-    for (i=0; i<share_btns_wrap.length; i++) {
-        share_btns_wrap[i].parentNode.removeChild(share_btns_wrap[i]);
+    for (let i = 0; i < shareBtnsWrap.length; i++) {
+        shareBtnsWrap[i].parentNode.removeChild(shareBtnsWrap[i]);
     }
-});
+}
+// TODO: replace onscroll event with Mutation Observer
+document.addEventListener("scroll", rmShareBtns);

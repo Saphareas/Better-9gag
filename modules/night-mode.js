@@ -85,7 +85,7 @@ function switchTheme(target) {
 
 function registerThemeSwitchObserver() {
     // function to call, if body observer fires
-    var callback = function() {
+    let callback = function() {
         // function to be run by the below promise on success
         function onGot(item) {
             if (item.gagIsDark == undefined) {
@@ -140,9 +140,9 @@ function registerThemeSwitchObserver() {
         }
     };
     // elements to be observed
-    var config = { childList: true, subtree: true };
+    let config = { childList: true, subtree: true };
     // create and attach the observer
-    var body_observer = new MutationObserver(callback);
+    let body_observer = new MutationObserver(callback);
     body_observer.observe(document.body, config);
 }
 

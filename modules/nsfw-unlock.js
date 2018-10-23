@@ -23,12 +23,12 @@ function hasVideo(postId, parentNode) {
 // Main function that detects and replaces NSFW posts
 function unlockNsfwPosts() {
     // get all NSFW post
-    var nsfwPosts = document.getElementsByClassName("nsfw-post");
+    let nsfwPosts = document.getElementsByClassName("nsfw-post");
     // for each of them:
-    for (i=0; i<nsfwPosts.length; i++) {
-        var parent = nsfwPosts[i].parentNode;
+    for (let i = 0; i < nsfwPosts.length; i++) {
+        let parent = nsfwPosts[i].parentNode;
         // get the 9gag id
-        var postId = parent.parentNode.parentNode.parentNode.getAttribute("id").split('-')[2];
+        let postId = parent.parentNode.parentNode.parentNode.getAttribute("id").split('-')[2];
         // inject unlocked post
         hasVideo(postId, parent);
         // finally remove the placeholder
