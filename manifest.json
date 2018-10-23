@@ -22,6 +22,7 @@
         "modules/night-mode.js",
         "modules/video-controls.js",
         "modules/nsfw-unlock.js",
+        "modules\no-social-buttons.js",
         "content.js"
       ],
       "css": ["ui_tweaks.css"],
