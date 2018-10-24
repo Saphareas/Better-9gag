@@ -1,4 +1,4 @@
-﻿{
+{
   "manifest_version": 2,
   "name": "Better 9gag",
   "version": "1.5.1",
@@ -19,11 +19,11 @@
     {
       "matches": ["*://*.9gag.com/*"],
       "js": [
-        "modules/night-mode.js",
-        "modules/video-controls.js",
-        "modules/nsfw-unlock.js",
-        "modules/no-social-buttons.js",
-        "modules/no-ora-tv.js",
+        "components/night-mode.js",
+        "components/video-controls.js",
+        "components/nsfw-unlock.js",
+        "components/no-social-buttons.js",
+        "components/no-ora-tv.js",
         "content.js"
       ],
       "css": ["stylesheets/ui-tweaks.css"],
