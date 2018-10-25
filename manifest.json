@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
   "name": "Better 9gag",
-  "version": "1.6",
+  "version": "1.6.1",
   "author": "Fabian Große",
   "homepage_url": "https://github.com/Saphareas/Better-9gag",
 
@@ -32,7 +32,8 @@
   ],
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   },
 
   "web_accessible_resources": [
