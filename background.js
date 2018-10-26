@@ -1,7 +1,4 @@
-﻿let manifest = function() {
-    try { return browser.runtime.getManifest(); } catch (e) { console.debug(e); }
-    try { return chrome.runtime.getManifest(); } catch (e) { console.debug(e); }
-}();
+﻿let manifest = browser.runtime.getManifest();
 
 function handleOnInstalled(details) {
     if (details.reason == "install") {
@@ -11,22 +8,19 @@ function handleOnInstalled(details) {
             message: "Thanks for installing Better 9gag.",
             iconUrl: "icons/icon-48.png"
         };
-        try { browser.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
-        try { chrome.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
+        browser.notifications.create(notificationOptions);
     }
     else if (details.reason == "update") {
         let notificationOptions = {
             type: "basic",
             title: `Version ${manifest.version} Changelog`,
             message: `Better 9gag was updated. Here is what has changed:
-                • This notification was added
-                • The extension now removes the sticky button in the bottom right
-                • Under-the-hood changes in preparation for version 2.0`,
+• Removed own theme switching button; uses 9gags new, own button instead.
+-> If you've used 9gag's night mode before this update and you're stuck between the two night modes, please disable this extension, on 9gag switch off the native night mode, and then reactivate this extension.
+• Simplified cross-browser stuff; this should give better performance.`,
             iconUrl: "icons/icon-48.png"
         };
-        try { browser.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
-        try { chrome.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
+        browser.notifications.create(notificationOptions);
     }
 }
-try { browser.runtime.onInstalled.addListener(handleOnInstalled); } catch (e) { console.debug(e); } 
-try { chrome.runtime.onInstalled.addListener(handleOnInstalled); } catch (e) { console.debug(e); }
+browser.runtime.onInstalled.addListener(handleOnInstalled);

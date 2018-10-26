@@ -1,5 +1,6 @@
 /* Dark background for whole site (same grey as YouTubes dark theme) */
 .background-white,
+#container, body,
 .post-afterbar-a.in-post-top,
 .CS3 { background: rgb(35,35,35); }
 /* White font for everything */
