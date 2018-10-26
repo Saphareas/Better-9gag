@@ -1,7 +1,4 @@
-﻿let manifest = function() {
-    try { return browser.runtime.getManifest(); } catch (e) { console.debug(e); }
-    try { return chrome.runtime.getManifest(); } catch (e) { console.debug(e); }
-}();
+﻿let manifest = browser.runtime.getManifest();
 
 function handleOnInstalled(details) {
     if (details.reason == "install") {
@@ -11,8 +8,7 @@ function handleOnInstalled(details) {
             message: "Thanks for installing Better 9gag.",
             iconUrl: "icons/icon-48.png"
         };
-        try { browser.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
-        try { chrome.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
+        browser.notifications.create(notificationOptions);
     }
     else if (details.reason == "update") {
         let notificationOptions = {
@@ -24,9 +20,7 @@ function handleOnInstalled(details) {
                 • Under-the-hood changes in preparation for version 2.0`,
             iconUrl: "icons/icon-48.png"
         };
-        try { browser.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
-        try { chrome.notifications.create(notificationOptions); } catch (e) { console.debug(e); }
+        browser.notifications.create(notificationOptions);
     }
 }
-try { browser.runtime.onInstalled.addListener(handleOnInstalled); } catch (e) { console.debug(e); } 
-try { chrome.runtime.onInstalled.addListener(handleOnInstalled); } catch (e) { console.debug(e); }
+browser.runtime.onInstalled.addListener(handleOnInstalled);

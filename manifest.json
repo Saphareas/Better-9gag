@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
   "name": "Better 9gag",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "author": "Fabian Große",
   "homepage_url": "https://github.com/Saphareas/Better-9gag",
 
@@ -19,6 +19,7 @@
     {
       "matches": ["*://*.9gag.com/*"],
       "js": [
+        "lib/better9gag.js",
         "components/night-mode.js",
         "components/video-controls.js",
         "components/nsfw-unlock.js",
@@ -32,8 +33,11 @@
   ],
 
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "scripts": [
+      "lib/better9gag.js",
+      "background.js"
+    ],
+    "persistent": true
   },
 
   "web_accessible_resources": [
