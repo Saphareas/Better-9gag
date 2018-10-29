@@ -2,13 +2,43 @@
 function addControls() {
     let videos = document.getElementsByTagName("video");
     for (let i = 0; i < videos.length; i++) {
+        // Add controls
         videos[i].controls = true;
+        // Set Volume to 50%
         videos[i].volume = 0.5; // TODO: default video volume customizable
-        if (videos[i].nextElementSibling.classList[0] == "sound-toggle") {
-            videos[i].parentNode.removeChild(videos[i].nextElementSibling);
+        // Disable Autoplay
+        videos[i].autoplay = false;
+        // Stretch portrait videos => show volume slider instead of only volume icon
+        videos[i].style.minWidth = "500px";
+        // Remove a.badge-track around videos => disable autoplay
+        let badgeTracker = videos[i].parentNode.parentNode;
+        if (badgeTracker.className.includes("badge")) {
+            let actualPost =  badgeTracker.firstElementChild.cloneNode(true);
+            badgeTracker.parentNode.replaceChild(actualPost, badgeTracker);
         }
-        // TODO: remove a.badge-track around videos (div.post-container > div > a.badge-track > video)
+        // Remove now unnecessary elements
+        hideExtraElements(".play");
+        hideExtraElements(".sound-toggle");
+        hideExtraElements(".length");
+
+        function hideExtraElements(identifier) {
+            let el = videos[i].parentNode.querySelector(identifier);
+            if (el) {
+                el.classList.add("hide");
+            }
+        }
     }
 }
-// TODO: replace onscroll event with Mutation Observer
-document.addEventListener("scroll", addControls);
+
+function removeYoutubePosts() {
+    let youtubePosts = document.querySelectorAll(".youtube-post");
+    for (let i = 0; i < youtubePosts.length; i++) {
+        let postRoot = youtubePosts[i].parentNode.parentNode.parentNode.parentNode;
+        postRoot.parentNode.removeChild(postRoot);
+    }
+}
+
+activateComponent(function() {
+    addControls();
+    removeYoutubePosts();
+});
