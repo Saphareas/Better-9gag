@@ -42,7 +42,35 @@ aside {
   width: 192px;
   border-right: 2px solid lightgrey;
 }
+aside > ul {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+li > a {
+  color: black;
+  height: 36px;
+  line-height: 20px;
+  padding: 8px 0;
+  padding-left: 36px;
+  box-sizing: border-box;
+  display: block;
+  transition: background-color .15s;
+  text-overflow: ellipsis;
+}
+li > a:hover {
+  background: rgb(240,240,240);
+}
 
 main {
   grid-area: main;
+}
+main > section {
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  padding: 0 36px;
+  padding-bottom: 17.433px;
+  box-sizing: border-box;
 }
