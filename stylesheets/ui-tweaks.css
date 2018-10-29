@@ -1,14 +1,17 @@
-#theme-switch-wrapper {
-  margin-right: 10px;
+.avatar-container {
+  border-radius: 2px !important;
 }
-#theme-switch > img {
-  height: 30px;
-  width: 30px;
+.popup-menu ul {
+  background: rgb(35, 35, 35) !important;
+  border: 1px solid white;
 }
-#jsid-header-user-menu-avatar > a {
-  border-radius: 2px;
+.popup-menu ul li a {
+  color: white !important;
 }
-.popup-menu.postpage-share { 
-  top: 43px; left: 164px; 
+.popup-menu a:hover {
+  background: black !important;
 }
-/* TODO: rename to ui-tweaks.css
+.popup-menu.postpage-share {
+  top: 43px;
+  left: 164px;
+}
