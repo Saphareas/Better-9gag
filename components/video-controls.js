@@ -10,5 +10,8 @@ function addControls() {
         // TODO: remove a.badge-track around videos (div.post-container > div > a.badge-track > video)
     }
 }
-// TODO: replace onscroll event with Mutation Observer
-document.addEventListener("scroll", addControls);
+
+activateComponent(function() {
+    addControls();
+    removeYoutubePosts();
+});

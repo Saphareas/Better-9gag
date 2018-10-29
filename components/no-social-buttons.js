@@ -13,6 +13,5 @@ function rmStickyBtn() {
     stickyBtn.parentNode.removeChild(stickyBtn);
 }
 
-// TODO: replace onscroll event with Mutation Observer
-document.addEventListener("scroll", rmShareBtns);
+activateComponent(rmShareBtns);
 document.addEventListener("DOMContentLoaded", rmStickyBtn);

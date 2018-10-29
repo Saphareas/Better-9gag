@@ -8,5 +8,5 @@ function rmOraVid() {
         ora.parentNode.removeChild(ora);
     }
 }
-// TODO: Replace event by Mutation Observer
-document.addEventListener("scroll", rmOraVid);
+
+activateComponent(rmOraVid);
