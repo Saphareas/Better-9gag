@@ -40,6 +40,12 @@
     "persistent": true
   },
 
+  "options_ui": {
+    "page": "options/options-page.html",
+    "open_in_tab": true
+  },
+  "options_page": "options/options-page.html",
+
   "web_accessible_resources": [
     "stylesheets/darken-9gag.css",
     "icons/low-brightness-symbol.png",
