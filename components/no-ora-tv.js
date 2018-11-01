@@ -9,4 +9,4 @@ function rmOraVid() {
     }
 }
 
-activateComponent(rmOraVid);
+registerObserver(rmOraVid);

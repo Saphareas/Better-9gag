@@ -38,7 +38,7 @@ function removeYoutubePosts() {
     }
 }
 
-activateComponent(function() {
+registerObserver(function() {
     addControls();
     removeYoutubePosts();
 });

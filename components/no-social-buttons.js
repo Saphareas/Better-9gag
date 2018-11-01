@@ -13,5 +13,5 @@ function rmStickyBtn() {
     stickyBtn.parentNode.removeChild(stickyBtn);
 }
 
-activateComponent(rmShareBtns);
+registerObserver(rmShareBtns);
 document.addEventListener("DOMContentLoaded", rmStickyBtn);

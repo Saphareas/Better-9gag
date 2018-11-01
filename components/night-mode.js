@@ -1,7 +1,3 @@
-/* #### Dark/Night theme on desktop #### */
-const LowBrightness = browser.runtime.getURL("icons/low-brightness-symbol.png");
-const HighBrightness = browser.runtime.getURL("icons/high-brightness-symbol.png");
-
 function hijackThemeSwitch() {
     // Code to inject into the site; triggers the body observer
     const switchFunctionTrigger = 'function switchThemeTrigger() { let trigger = document.createElement("div"); trigger.id = "switch-theme-trigger"; let stylesheet = document.getElementById("dark-theme"); if (stylesheet) { trigger.setAttribute("data-switch-to", "reset"); } else { trigger.setAttribute("data-switch-to", "toDark"); } document.body.append(trigger); }';
@@ -92,7 +88,9 @@ function registerThemeSwitchObserver() {
     body_observer.observe(document.body, config);
 }
 
-// Add the switch to the site when DOM is ready
-document.addEventListener("DOMContentLoaded", hijackThemeSwitch);
-// Register the observer
-document.addEventListener("DOMContentLoaded", registerThemeSwitchObserver);
+activateComponent("replaceNativeDark", function() {
+    // Add the switch to the site when DOM is ready
+    document.addEventListener("DOMContentLoaded", hijackThemeSwitch);
+    // Register the observer
+    document.addEventListener("DOMContentLoaded", registerThemeSwitchObserver);
+});
