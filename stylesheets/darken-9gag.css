@@ -2,6 +2,7 @@
 .background-white,
 #container, body,
 .post-afterbar-a.in-post-top,
+.CS3 .notice-message,
 .CS3 {
   background: rgb(35,35,35);
 }
@@ -15,10 +16,12 @@ section.block-feature-cover a,
 .profile .tab-bar ul.menu a.selected,
 .CS3 .comment-entry .payload .username,
 .CS3 .collapsed-comment,
-.tab > .active > a,
 .post-text-container p,
 .CS3 {
   color: white;
+}
+.tab > .active > a {
+  color: white !important;
 }
 .profile .tab-bar ul.menu a.selected {
   border-bottom: 2px solid white;
