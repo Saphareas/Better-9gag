@@ -36,4 +36,6 @@ function unlockNsfwPosts() {
     }
 }
 
-registerObserver(unlockNsfwPosts);
+activateComponent("unlockNSFW", function() {
+    registerObserver(unlockNsfwPosts);
+});
