@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="options-page.css" rel="stylesheet" type="text/css">
+  <script src="options-page.js"></script>
   <title>Better 9gag Settings</title>
 </head>
 <body>
@@ -35,6 +36,11 @@
     <main>
       <section id="night-mode">
         <h2>Night mode</h2>
+        <form>
+          <input type="checkbox" name="replaceNativeDark" > Replace 9gag's native dark mode with custom dark mode. (Looks like YouTube instead of completely black)<br>
+          <br>
+          <input type="button" name="resetDark" value="Reset stored night mode state">
+        </form>
       </section>
       <section id="nsfw-unlock">
         <h2>NSFW unlock</h2>

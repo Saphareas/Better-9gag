@@ -9,6 +9,13 @@ function handleOnInstalled(details) {
             iconUrl: "icons/icon-48.png"
         };
         browser.notifications.create(notificationOptions);
+
+        const defaultSettings = {
+            settings: {
+                replaceNativeDark: true
+            }
+        };
+        browser.storage.local.set(defaultSettings);
     }
     else if (details.reason == "update") {
         let notificationOptions = {
