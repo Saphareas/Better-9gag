@@ -88,7 +88,7 @@ function registerThemeSwitchObserver() {
     body_observer.observe(document.body, config);
 }
 
-activateComponent("replaceNativeDark", function() {
+getSetting("replaceNativeDark", function() {
     // Add the switch to the site when DOM is ready
     document.addEventListener("DOMContentLoaded", hijackThemeSwitch);
     // Register the observer
