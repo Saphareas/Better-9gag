@@ -36,6 +36,4 @@ function unlockNsfwPosts() {
     }
 }
 
-getSetting("unlockNSFW", function() {
-    registerObserver(unlockNsfwPosts);
-});
+getSetting("unlockNSFW", unlockNsfwPosts, registerObserver);
