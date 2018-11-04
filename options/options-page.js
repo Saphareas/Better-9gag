@@ -11,6 +11,13 @@ function loadSettings() {
             checkboxes[i].checked = item.settings[chkbxName];
         }
     });
+    let numeric = document.querySelectorAll("input[type=number]");
+    browser.storage.local.get(null, function(item) {
+        for (i = 0; i < numeric.length; i++) {
+            let numbName = numeric[i].name;
+            numeric[i].value = item.settings[numbName] * 100;
+        }
+    });
 }
 
 function handleCheckboxInput(sender) {
@@ -30,7 +37,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementsByName("resetDark")[0].addEventListener("click", function() {
         browser.storage.local.remove("gagIsDark");
-    })
+    });
+
+    document.getElementsByName("defaultVolume")[0].addEventListener("input", function(sender) {
+        if (sender != null || sender != undefined) {
+            browser.storage.local.get(null, function(item) {
+                item.settings[sender.srcElement.name] = sender.srcElement.value / 100;
+                browser.storage.local.set(item);
+            });
+        }
+    });
 
     loadSettings();
 });

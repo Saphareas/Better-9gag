@@ -12,7 +12,12 @@ function handleOnInstalled(details) {
 
         const defaultSettings = {
             settings: {
-                replaceNativeDark: true
+                replaceNativeDark: true,
+                unlockNSFW: true,
+                vidControls: true,
+                noAutoplay:true,
+                defaultVolume: 0.5,
+                hideYtPosts: true
             }
         };
         browser.storage.local.set(defaultSettings);
