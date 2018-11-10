@@ -43,7 +43,7 @@ Features that are planned for the future:
     </td>
   </tr>
   <tr>
-    <td>Click here for the Firefox listing</td>
+    <td>Click here for the <br> Firefox listing</td>
   </tr>
 </table>
 
@@ -54,7 +54,7 @@ Features that are planned for the future:
 
 1. Download the extension file (Better-9gag.crx) [here](https://github.com/Saphareas/Better-9gag/releases/latest)
 2. Go to Chrome's Extensions page ( chrome://extensions/ )
-3. Activate the developer mode (it's a switch in the top right)
+3. Activate the developer mode (it's a switch in the top right) and reload the page
 4. Drag and drop the downloaded file from your downloads folder into the page
 
 ## Authors
@@ -69,4 +69,4 @@ This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) fi
 
 ## Disclaimer
 
-Me, the other other authors and this project are not in any way associated with 9gag.com and/or it's creators.
+Me, the other authors and this project are not in any way associated with 9gag.com and/or it's creators.
