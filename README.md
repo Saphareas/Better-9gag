@@ -41,9 +41,15 @@ Features that are planned for the future:
         <img src=".github/firefox-logo.png" />
       </a>
     </td>
+    <td style="text-align:center">
+      <a href="https://www.microsoft.com/store/apps/9MT68CJLB6HL">
+        <img src=".github/edge-logo.png" />
+      </a>
+    </td>
   </tr>
   <tr>
     <td>Click here for the <br> Firefox listing</td>
+    <td>Click here for the <br> Edge listing</td>
   </tr>
 </table>
 
