@@ -8,6 +8,8 @@ function addControls() {
         videos[i].volume = 0.5; // TODO: default video volume customizable
         // Disable Autoplay
         videos[i].autoplay = false;
+        // Disable Preloading the whole video = save bandwidth
+        videos[i].preload = "metadata";
         // Stretch portrait videos => show volume slider instead of only volume icon
         videos[i].style.minWidth = "500px";
         // Remove a.badge-track around videos => disable autoplay
