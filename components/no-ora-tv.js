@@ -9,4 +9,6 @@ function rmOraVid() {
     }
 }
 
-registerObserver(rmOraVid);
+document.addEventListener("DOMContentLoaded", function() {
+    getSetting("hideOraVids", null, rmOraVid);
+});

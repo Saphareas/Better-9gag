@@ -17,7 +17,10 @@ function handleOnInstalled(details) {
                 vidControls: true,
                 noAutoplay:true,
                 defaultVolume: 0.5,
-                hideYtPosts: true
+                hideYtPosts: true,
+                hideShareBtns: true,
+                hideStickyBtn: true,
+                hideOraVids: true
             }
         };
         browser.storage.local.set(defaultSettings);

@@ -13,5 +13,8 @@ function rmStickyBtn() {
     stickyBtn.parentNode.removeChild(stickyBtn);
 }
 
-registerObserver(rmShareBtns);
-document.addEventListener("DOMContentLoaded", rmStickyBtn);
+document.addEventListener("DOMContentLoaded", function() {
+    getSetting("hideStickyBtn", null, rmStickyBtn);
+});
+getSetting("hideShareBtns", rmShareBtns, registerObserver);
+ 
