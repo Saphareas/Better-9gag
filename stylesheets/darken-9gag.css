@@ -16,6 +16,7 @@ section.block-feature-cover a,
 .profile .tab-bar ul.menu a.selected,
 .CS3 .comment-entry .payload .username,
 .CS3 .collapsed-comment,
+.CS3 .tab-bar ul.tab li.active a,
 .post-text-container p,
 .CS3 {
   color: white;

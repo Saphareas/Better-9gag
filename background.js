@@ -30,10 +30,8 @@ function handleOnInstalled(details) {
             type: "basic",
             title: `Version ${manifest.version} Changelog`,
             message: `Better 9gag was updated. Here is what has changed:
-• Videos don't start playing, when you just scroll past them
-• No more YouTube posts
-• General improvements to the video controls stuff
-• Maybe better performance`,
+• Videos/Gifs don't preload, saving your bandwidth
+• Fix dark mode for the notice under uncommented posts`,
             iconUrl: "icons/icon-48.png"
         };
         browser.notifications.create(notificationOptions);
