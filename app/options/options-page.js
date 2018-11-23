@@ -1,4 +1,4 @@
-if (browser == "undefined") {
+if (typeof browser == "undefined") {
     var browser = chrome;
 }
 
