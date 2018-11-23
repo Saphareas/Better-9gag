@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Better 9gag",
-  "version": "1.7.1",
+  "version": "2.0",
   "author": "Fabian Große",
   "homepage_url": "https://github.com/Saphareas/Better-9gag",
 
@@ -46,11 +46,7 @@
   },
   "options_page": "options/options-page.html",
 
-  "web_accessible_resources": [
-    "stylesheets/darken-9gag.css",
-    "icons/low-brightness-symbol.png",
-    "icons/high-brightness-symbol.png"
-  ],
+  "web_accessible_resources": ["stylesheets/darken-9gag.css"],
 
   "permissions": [
     "storage",
