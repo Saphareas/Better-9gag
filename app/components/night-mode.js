@@ -1,16 +1,15 @@
-/* #### Dark/Night theme on desktop #### */
-const LowBrightness = browser.runtime.getURL("icons/low-brightness-symbol.png");
-const HighBrightness = browser.runtime.getURL("icons/high-brightness-symbol.png");
-
+/**
+ * Replace the click action of the native theme switch to use the custom dark theme.
+ */
 function hijackThemeSwitch() {
     // Code to inject into the site; triggers the body observer
     const switchFunctionTrigger = 'function switchThemeTrigger() { let trigger = document.createElement("div"); trigger.id = "switch-theme-trigger"; let stylesheet = document.getElementById("dark-theme"); if (stylesheet) { trigger.setAttribute("data-switch-to", "reset"); } else { trigger.setAttribute("data-switch-to", "toDark"); } document.body.append(trigger); }';
-    // Inject code
+    // Inject the code
     let switchFunctionTag = document.createElement("script");
     switchFunctionTag.id = "theme-switch-function";
     switchFunctionTag.appendChild(document.createTextNode(switchFunctionTrigger));
     document.head.append(switchFunctionTag);
-
+    // Clone the native theme switch and apply custom click action
     let themeSwitch = document.getElementById("jsid-header-darkmode-btn");
     let themeSwitchClone = themeSwitch.cloneNode(true);
     themeSwitchClone.id = "theme-switch";
@@ -18,7 +17,10 @@ function hijackThemeSwitch() {
     themeSwitch.parentElement.replaceChild(themeSwitchClone, themeSwitch);
 }
 
-// Actual function to switch the theme; is run by the body observer
+/**
+ * Actual function to switch the theme; is run by the body observer.
+ * @param {string} target Is either "toDark" or sth else.
+ */
 function switchTheme(target) {
     let themeSwitch = document.getElementById("theme-switch");
     // If the target theme is not dark, means back to normal
@@ -50,6 +52,9 @@ function switchTheme(target) {
     }
 }
 
+/**
+ * Create a MutationObserver that watches body mutations for #switch-theme-trigger elements and calls switchTheme() accordingly.
+ */
 function registerThemeSwitchObserver() {
     // function to call, if body observer fires
     let callback = function() {
@@ -92,7 +97,9 @@ function registerThemeSwitchObserver() {
     body_observer.observe(document.body, config);
 }
 
-// Add the switch to the site when DOM is ready
-document.addEventListener("DOMContentLoaded", hijackThemeSwitch);
-// Register the observer
-document.addEventListener("DOMContentLoaded", registerThemeSwitchObserver);
+getSetting("replaceNativeDark", null, function () {
+    // Add the switch to the site when DOM is ready
+    $(document).ready(hijackThemeSwitch);
+    // Register the observer
+    $(document).ready(registerThemeSwitchObserver);
+});

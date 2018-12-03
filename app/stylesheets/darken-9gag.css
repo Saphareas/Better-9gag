@@ -21,6 +21,9 @@ section.block-feature-cover a,
 .CS3 {
   color: white;
 }
+.tab > .active > a {
+  color: white !important;
+}
 .profile .tab-bar ul.menu a.selected {
   border-bottom: 2px solid white;
 }

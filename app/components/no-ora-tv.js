@@ -1,4 +1,6 @@
-/* ### Remove annoying paid video post from ora.tv ### */
+/**
+ * Remove annoying paid video post from ora.tv.
+ */
 function rmOraVid() {
     // find it
     let ora = document.querySelector('iframe[src^="https://www.ora.tv"]');
@@ -9,4 +11,6 @@ function rmOraVid() {
     }
 }
 
-activateComponent(rmOraVid);
+$(document).ready(function() {
+    getSetting("hideOraVids", null, rmOraVid);
+});

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="options-page.css" rel="stylesheet" type="text/css">
+  <script src="options-page.js"></script>
+  <title>Better 9gag Settings</title>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <a href="#">
+          <p class="pre-logo">better</p>
+          <img class="logo" src="https://assets-9gag-fun.9cache.com/s/fab0aa49/3af0862f92b23324e34c762bd46afc2053aaba50/static/dist/web6/img/sprite-logo.png" alt="9gag logo">
+        </a>
+      </div>
+    </header>
+
+    <aside>
+      <ul>
+        <li><a href="#night-mode">Night mode</a></li>
+        <li><a href="#nsfw-unlock">NSFW unlock</a></li>
+        <li><a href="#video-stuff">Video/Gif stuff</a></li>
+        <li><a href="#other-stuff">Other Stuff</a></li>
+      </ul>
+      <ul>
+        <li><a href="#help">Usage & Help</a></li>
+        <li><a href="#history">Version History</a></li>
+        <li><a href="https://github.com/Saphareas/Better-9gag">Source Code (external)</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <section id="night-mode">
+        <h2>Night mode</h2>
+        <form>
+          <input type="checkbox" name="replaceNativeDark" id="replaceNativeDark" >
+          <label for="replaceNativeDark">Replace 9gag's native dark mode with custom dark mode. (Looks like YouTube instead of completely black)</label><br><br>
+          <input type="button" name="resetDark" value="Reset stored night mode state">
+        </form>
+      </section>
+      <section id="nsfw-unlock">
+        <h2>NSFW unlock</h2>
+        <form>
+          <input type="checkbox" name="unlockNSFW" id="unlockNSFW"> 
+          <label for="unlockNSFW">NSFW posts when not logged in</label><br>
+        </form>
+      </section>
+      <section id="video-stuff">
+        <h2>Video/Gif stuff</h2>
+        <form>
+          <input type="checkbox" name="vidControls" id="vidControls"> 
+          <label for="vidControls">Show controls for videos and gifs</label><br>
+          <input type="checkbox" name="noAutoplay" id="noAutoplay"> 
+          <label for="noAutoplay">Disable autoplay when scrolling by</label><br>
+          <input type="checkbox" name="hideYtPosts" id="hideYtPosts"> 
+          <label for="hideYtPosts">Hide YouTube posts</label><br>
+          <input type="number" name="defaultVolume" id="defaultVolume" min="0" max="100" style="max-width: 2rem;">
+          <label for="defaultVolume">Default volume (in %)</label><br>
+        </form>
+      </section>
+      <section id="other-stuff">
+        <h2>Other Stuff</h2>
+        <form>
+          <input type="checkbox" name="hideShareBtns" id="hideShareBtns"> 
+          <label for="hideShareBtns">Hide Facebook/Pinterest buttons</label><br>
+          <input type="checkbox" name="hideStickyBtn" id="hideStickyBtn"> 
+          <label for="hideStickyBtn">Hide Ad for the 9gag app (sticky button in the bottom right)</label><br>
+          <input type="checkbox" name="hideOraVids" id="hideOraVids"> 
+          <label for="hideOraVids">Hide sponsored/paid videos (by ora.tv)</label><br>
+        </form>
+      </section>
+      <section id="help">
+        <h2>Usage & Help</h2>
+      </section>
+      <section id="history">
+        <h2>Version History</h2>
+        <h3>Version 1.7.1</h3>
+        <ul>
+          <li>Videos/Gifs don't preload, saving your bandwidth</li>
+          <li>Fix dark mode for the notice under uncommented posts</li>
+          <li>Fix "Hot" comments tab black font</li>
+        </ul>
+        <h3>Version 1.7</h3>
+        <ul>
+          <li>Videos don't start playing, when you just scroll past them</li>
+          <li>No more YouTube posts</li>
+          <li>General improvements to the video controls stuff</li>
+          <li>Maybe better performance</li>
+        </ul>
+        <h3>Version 1.6.2</h3>
+        <ul>
+          <li>Removed own theme switching button, using 9gags new, own button instead</li>
+          <li>Simplified cross-browser stuff, this should give better performance</li>
+        </ul>
+        <h3>Version 1.6.1</h3>
+        <ul>
+          <li>A notification displaying the changes after an update was added</li>
+          <li>The extension now removes the sticky button in the bottom right</li>
+        </ul>
+        <h3>Version 1.5.1</h3>
+        <ul>
+          <li>Maintenance release, mainly under-the-hood changes, nothing new</li>
+        </ul>
+        <h3>Version 1.5</h3>
+        <ul>
+          <li>Dark theme is now persistent</li>
+          <li>Added compatibility for Chrome</li>
+          <li>Added compatibility for Edge</li>
+        </ul>
+        <h3>Version 1.4.2</h3>
+        <ul>
+          <li>Unlocking NSFW posts now also works for gifs/videos</li>
+        </ul>
+        <h3>Version 1.4</h3>
+        <ul>
+          <li>Removing Facebook/Pinterest share buttons</li>
+        </ul>
+        <h3>Version 1.3.4</h3>
+        <ul>
+          <li>Fixed a bug with the video controls</li>
+          <li>Removed debug helpers spamming into the console</li>
+        </ul>
+        <h3>Version 1.3.3</h3>
+        <ul>
+          <li>Fixed "theme_switch" reference error</li>
+        </ul>
+        <h3>Version 1.3.2</h3>
+        <ul>
+          <li>Replaced potential unsafe code</li>
+          <li>Removing mute button from video posts</li>
+        </ul>
+        <h3>Version 1.3</h3>
+        <ul>
+          <li>Showing NSFW images when not logged in (not for videos/gifs)</li>
+        </ul>
+        <h3>Version 1.2</h3>
+        <ul>
+          <li>Added dark/night mode</li>
+        </ul>
+        <h3>Version 1.0</h3>
+        <ul>
+          <li>Adding video controls to all videos/gifs</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
