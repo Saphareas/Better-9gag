@@ -1,6 +1,20 @@
 ﻿let manifest = browser.runtime.getManifest();
 
 function handleOnInstalled(details) {
+    const defaultSettings = {
+        settings: {
+            replaceNativeDark: true,
+            unlockNSFW: true,
+            vidControls: true,
+            noAutoplay:true,
+            defaultVolume: 0.5,
+            hideYtPosts: true,
+            hideShareBtns: true,
+            hideStickyBtn: true,
+            hideOraVids: true
+        }
+    };
+
     if (details.reason == "install") {
         let notificationOptions = {
             type: "basic",
@@ -9,20 +23,6 @@ function handleOnInstalled(details) {
             iconUrl: "icons/icon-48.png"
         };
         browser.notifications.create(notificationOptions);
-
-        const defaultSettings = {
-            settings: {
-                replaceNativeDark: true,
-                unlockNSFW: true,
-                vidControls: true,
-                noAutoplay:true,
-                defaultVolume: 0.5,
-                hideYtPosts: true,
-                hideShareBtns: true,
-                hideStickyBtn: true,
-                hideOraVids: true
-            }
-        };
         browser.storage.local.set(defaultSettings);
     }
     else if (details.reason == "update") {
@@ -35,6 +35,11 @@ The options page is accessible via the extensions page of your browser.`,
             iconUrl: "icons/icon-48.png"
         };
         browser.notifications.create(notificationOptions);
+        browser.storage.local.get("settings", function(item) {
+            if (jQuery.isEmptyObject(item)) {
+                browser.storage.local.set(defaultSettings);
+            }
+        });
     }
 }
 
