@@ -1,3 +1,9 @@
+/*!
+ * Copyright Fabian Große
+ * Released under the GNU GENERAL PUBLIC LICENSE 3
+ * https://raw.githubusercontent.com/Saphareas/Better-9gag/master/LICENSE
+ */
+
 /**
  * Helper function to support both image and video/gif posts.
  * @param {string} postId The ID of the post to be replaced.
