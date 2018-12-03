@@ -19,6 +19,7 @@
     {
       "matches": ["*://*.9gag.com/*"],
       "js": [
+        "lib/jquery-3.3.1.slim.js",
         "lib/better9gag.js",
         "components/night-mode.js",
         "components/video-controls.js",
