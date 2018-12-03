@@ -1,4 +1,7 @@
-/* #### Add controls to all videos/gifs #### */
+/**
+ * Add controls to all videos/gifs.
+ * @param {HTMLElement} vid <video> element to be processed.
+ */
 function addControls(vid) {
     // Add controls
     vid.controls = true;
@@ -14,6 +17,10 @@ function addControls(vid) {
     }
 }
 
+/**
+ * Apply the default volume set by the user.
+ * @param {HTMLElement} vid <video> element to be processed.
+ */
 function applyDefaultVolume(vid) {
     browser.storage.local.get(null, function(item) {
         if (item.settings.defaultVolume) {
@@ -22,8 +29,11 @@ function applyDefaultVolume(vid) {
     });
 }
 
+/**
+ * Remove a.badge-track around videos to disable autoplay when scrolling by.
+ * @param {HTMLElement} vid <video> element to be processed.
+ */
 function removeBadgeTrack(vid) {
-    // Remove a.badge-track around videos => disable autoplay
     let badgeTracker = vid.parentNode.parentNode;
     if (badgeTracker.className.includes("badge")) {
         let actualPost = badgeTracker.firstElementChild.cloneNode(true);
@@ -31,6 +41,9 @@ function removeBadgeTrack(vid) {
     }
 }
 
+/**
+ * Get all videos/gifs, loop through them and apply the changes according to the users settings.
+ */
 function loopThroughVideos() {
     let videos = document.getElementsByTagName("video");
     for (i = 0; i < videos.length; i++) {
@@ -48,6 +61,9 @@ function loopThroughVideos() {
     }
 }
 
+/**
+ * Find Youtube posts and remove them.
+ */
 function removeYoutubePosts() {
     let youtubePosts = document.querySelectorAll(".youtube-post");
     for (let i = 0; i < youtubePosts.length; i++) {

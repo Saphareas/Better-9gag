@@ -1,4 +1,6 @@
-/* #### Remove sharing buttons #### */
+/**
+ * Remove (Facebook and Pinterest) sharing buttons.
+ */
 function rmShareBtns() {
     // get all of the buttons (actually the wrappers)
     let shareBtnsWrap = document.getElementsByClassName("share");
@@ -8,6 +10,9 @@ function rmShareBtns() {
     }
 }
 
+/**
+ * Remove the sticky button in the bottom right.
+ */
 function rmStickyBtn() {
     let stickyBtn = document.getElementById("jsid-sticky-button");
     stickyBtn.parentNode.removeChild(stickyBtn);

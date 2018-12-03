@@ -1,6 +1,9 @@
-/* #### Show NSFW posts when not logged in #### */
-// Helper function to support both image and video/gif posts
-function hasVideo(postId, parentNode) {
+/**
+ * Helper function to support both image and video/gif posts.
+ * @param {string} postId The ID of the post to be replaced.
+ * @param {HTMLElement} post The node with the NSFW placeholder.
+ */
+function hasVideo(postId, post) {
     const srcUrlBase = "https://img-9gag-fun.9cache.com/photo/" + postId;
     // create a video node with the unlocked post as source
     let video = document.createElement("video");
@@ -23,7 +26,9 @@ function hasVideo(postId, parentNode) {
     }
 }
 
-// Main function that detects and replaces NSFW posts
+/**
+ * Get all NSFW posts and replace the placeholder with the actual post.
+ */
 function unlockNsfwPosts() {
     // get all NSFW post
     let nsfwPosts = document.getElementsByClassName("nsfw-post");
