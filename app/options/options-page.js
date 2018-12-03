@@ -32,7 +32,7 @@ function handleCheckboxInput(sender) {
 document.addEventListener("DOMContentLoaded", function() {
     let inputs = document.querySelectorAll("input[type=checkbox]");
     for (i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener("input", handleCheckboxInput);
+        inputs[i].addEventListener("change", handleCheckboxInput);
     }
 
     document.getElementsByName("resetDark")[0].addEventListener("click", function() {

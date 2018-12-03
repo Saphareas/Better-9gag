@@ -37,32 +37,40 @@
       <section id="night-mode">
         <h2>Night mode</h2>
         <form>
-          <input type="checkbox" name="replaceNativeDark" > Replace 9gag's native dark mode with custom dark mode. (Looks like YouTube instead of completely black)<br>
-          <br>
+          <input type="checkbox" name="replaceNativeDark" id="replaceNativeDark" >
+          <label for="replaceNativeDark">Replace 9gag's native dark mode with custom dark mode. (Looks like YouTube instead of completely black)</label><br><br>
           <input type="button" name="resetDark" value="Reset stored night mode state">
         </form>
       </section>
       <section id="nsfw-unlock">
         <h2>NSFW unlock</h2>
         <form>
-          <input type="checkbox" name="unlockNSFW"> Show NSFW posts when not logged in
+          <input type="checkbox" name="unlockNSFW" id="unlockNSFW"> 
+          <label for="unlockNSFW">NSFW posts when not logged in</label><br>
         </form>
       </section>
       <section id="video-stuff">
         <h2>Video/Gif stuff</h2>
         <form>
-          <input type="checkbox" name="vidControls"> Show controls for videos and gifs<br>
-          <input type="checkbox" name="noAutoplay"> Disable autoplay when scrolling by<br>
-          Default volume (in %) <input type="number" name="defaultVolume" min="0" max="100" style="max-width: 4em;"><br>
-          <input type="checkbox" name="hideYtPosts"> Hide YouTube posts<br>
+          <input type="checkbox" name="vidControls" id="vidControls"> 
+          <label for="vidControls">Show controls for videos and gifs</label><br>
+          <input type="checkbox" name="noAutoplay" id="noAutoplay"> 
+          <label for="noAutoplay">Disable autoplay when scrolling by</label><br>
+          <input type="checkbox" name="hideYtPosts" id="hideYtPosts"> 
+          <label for="hideYtPosts">Hide YouTube posts</label><br>
+          <input type="number" name="defaultVolume" id="defaultVolume" min="0" max="100" style="max-width: 2rem;">
+          <label for="defaultVolume">Default volume (in %)</label><br>
         </form>
       </section>
       <section id="other-stuff">
         <h2>Other Stuff</h2>
         <form>
-          <input type="checkbox" name="hideShareBtns"> Hide Facebook/Pinterest buttons<br>
-          <input type="checkbox" name="hideStickyBtn"> Hide Ad for the 9gag app (sticky button in the bottom right)<br>
-          <input type="checkbox" name="hideOraVids"> Hide sponsored/paid videos (by ora.tv)<br>
+          <input type="checkbox" name="hideShareBtns" id="hideShareBtns"> 
+          <label for="hideShareBtns">Hide Facebook/Pinterest buttons</label><br>
+          <input type="checkbox" name="hideStickyBtn" id="hideStickyBtn"> 
+          <label for="hideStickyBtn">Hide Ad for the 9gag app (sticky button in the bottom right)</label><br>
+          <input type="checkbox" name="hideOraVids" id="hideOraVids"> 
+          <label for="hideOraVids">Hide sponsored/paid videos (by ora.tv)</label><br>
         </form>
       </section>
       <section id="help">
