@@ -9,8 +9,6 @@ A WebExtension that provides improvements to the browsing experience for 9gag.
 - [Installation](#installation)
   - [Google Chrome](#google-chrome)
 - [Packaging](#packaging)
-  - [Firefox](#firefox)
-  - [Edge](#edge)
 - [Authors](#authors)
 - [License](#license)
 - [Disclaimer](#disclaimer)
@@ -27,13 +25,7 @@ Provides features, such as:
 - Removing the sharing buttons
 - General style tweaks
 
-### Coming features
-
-Features that are planned for the future:
-
-- [x] Persistent night theme _(planned for v1.5)_
-- [ ] Configure extension settings _(planned for v2.0)_
-- [ ] Some more style tweaks
+And everything is customizable via settings.
 
 ## Installation
 
@@ -61,6 +53,12 @@ npm install --global web-ext
 npm install -g manifoldjs
 ```
 
+### Using my custom build script
+
+```bash
+./build.sh firefox|edge|chrome|all
+```
+
 ### Firefox
 
 ```bash
@@ -82,7 +80,7 @@ manifoldjs -l debug -p edgeextension package Better\ 9gag/edgeextension/manifest
 
 ## License
 
-This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details
+This project, unless otherwise noted, is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details.
 
 ## Disclaimer
 
