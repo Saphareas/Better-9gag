@@ -9,6 +9,6 @@ function rmOraVid() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+$(document).ready(function() {
     getSetting("hideOraVids", null, rmOraVid);
 });

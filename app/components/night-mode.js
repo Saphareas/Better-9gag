@@ -90,7 +90,7 @@ function registerThemeSwitchObserver() {
 
 getSetting("replaceNativeDark", null, function () {
     // Add the switch to the site when DOM is ready
-    document.addEventListener("DOMContentLoaded", hijackThemeSwitch);
+    $(document).ready(hijackThemeSwitch);
     // Register the observer
-    document.addEventListener("DOMContentLoaded", registerThemeSwitchObserver);
+    $(document).ready(registerThemeSwitchObserver);
 });
